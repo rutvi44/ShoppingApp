@@ -1,0 +1,853 @@
+<!--
+Revision History: 12/08/2023
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for responsive design -->
+    <meta charset="UTF-8" name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--    <meta http-equiv="origin-trial" content="AjlQd1gzqSlgL0m5R6UzX/seK2l6d/hMbVbGovm8B6qc+3TnwuEGUPIH6I4mYzmWZ70latoevq/81DC5oqV6FgQAAABKeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjYzMzQyIiwiZmVhdHVyZSI6IldlYlNRTCIsImV4cGlyeSI6MTcxNjk0MDc5OX0=">-->
+    <meta http-equiv="origin-trial"
+          content="AjlQd1gzqSlgL0m5R6UzX/seK2l6d/hMbVbGovm8B6qc+3TnwuEGUPIH6I4mYzmWZ70latoevq/81DC5oqV6FgQAAABKeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjYzMzQyIiwiZmVhdHVyZSI6IldlYlNRTCIsImV4cGlyeSI6MTcxNjk0MDc5OX0=">
+
+    <!-- Page title -->
+    <title>JKM Shoe Shop</title>
+
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <!--jquery mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!--jquery mobile styles-->
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.css">
+    <!--jquery validation-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <!--our stuff-->
+    <script src="js/databse.js"></script>
+    <script src="js/DAL.js"></script>
+    <script src="js/facade.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/customerClass.js"></script>
+    <link rel="stylesheet" href="css/mystyle.css">
+
+</head>
+<body>
+<!-- Header section -->
+<div data-role="page" id="HomePage">
+    <header data-role="header" data-position="fixed" data-theme="a">
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" class="ui-btn-active ui-state-persist"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>JKM Shoe Shop</h2>
+    </header>
+
+    <section data-role="content">
+        <!-- Introduction section -->
+        <h2>Shoe Shop</h2>
+        <button onclick="getLocation()" data-theme="b" >Get Location</button>
+        <div data-role="popup" id="geoPopup" data-theme="b" class="ui-content"
+             style="max-width: fit-content; padding-bottom: 2em">
+            <p id="locationText"></p>
+            <p id="errorText" style="color: red;"></p>
+            <a href="#HomePage" data-rel="back"
+               class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left ui-mini ui-btn-inline" data-transition="pop">
+                Go Back
+            </a>
+        </div>
+        <h3 style="text-align: center">
+            Welcome to the Shoe Shop App. This App is designed for academic purpose only. It is developed during Group
+            Project Task.
+            In this, We've designed the web pages with our all efforts.
+        </h3>
+        <!--        &lt;!&ndash; Image &ndash;&gt; id="heading"-->
+        <img src="img/shoe.jpg" alt="" width="500" height="450">
+        <h3 style="text-align: center">Please Feel free to Contact if you have any Questions...!</h3>
+
+        <!-- Contact Button -->
+        <a href="tel:16479494735" data-role="button" data-rel="dialog" data-iconpos="right" data-icon="plus">
+            <h4 id="heading">Call : +1(647)949-4735 </h4>
+        </a>
+
+        <!-- Email button -->
+        <a data-role="button" data-rel="dialog" data-icon="plus" data-iconpos="right"
+           href="mailto:jkmshoeshop@gmail.com">
+            <h4 id="heading1"> Email : jkmshoeshop@gmail.com </h4>
+        </a>
+
+        <!-- Website button -->
+        <a data-role="button" data-rel="dialog" data-icon="plus" data-iconpos="right" href="https://theshoeshop.ca/"
+           target="_blank">
+            <h4 id="heading2"> Website : jkmshoeshop.com </h4>
+        </a>
+
+
+    </section>
+
+
+    <!-- Footer section -->
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+
+<!--Collections Page-->
+<div data-role="page" id="CollectionPage">
+    <!-- Header section -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop" class="ui-btn-active ui-state-persist"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>Collections</h2>
+    </header>
+    <section class="imageSection">
+
+        <figure>
+            <a href="#menPage">
+                <img src="img/men.png" alt="Men" width="400" height="400">
+                <figcaption style="text-align: center">Men</figcaption>
+            </a>
+        </figure>
+
+        <figure>
+            <a href="#kidsPage">
+                <img src="img/kids.png" alt="Kids" width="400" height="400">
+                <figcaption style="text-align: center">Kids</figcaption>
+            </a>
+        </figure>
+
+        <figure>
+            <a href="#womenPage">
+                <img src="img/women.png" alt="Women" width="400" height="400">
+                <figcaption style="text-align: center">Women</figcaption>
+            </a>
+        </figure>
+    </section>
+
+    <!--Footer-->
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+<!--Women Page-->
+<div data-role="page" id="womenPage">
+    <!-- Header section -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop" class="ui-btn-active ui-state-persist"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>Women</h2>
+        <div id="womenAddedProductQuantity">
+            Added products: <span id="womenAddedProductQuantity">0</span>
+        </div>
+    </header>
+
+    <section class="imageSection">
+        <!-- Women's Products -->
+        <div class="product">
+            <img src="img/women2.png" alt="Product Image" width="500" height="450">
+            <h3>Price: $34.99</h3>
+            <button onclick="addToCart('001','Running',34.99, 'Women')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('001')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo1" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+
+        <div class="product">
+            <img src="img/women1.png" alt="Product Image" width="500" height="450">
+            <h3>Price: $56.99</h3>
+            <button onclick="addToCart('002','Sneakers',56.99, 'Women')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('002')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo2" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+
+        <div class="product">
+            <img src="img/women3.png" alt="Product Image" width="500" height="450">
+            <h3>Price: $89.99</h3>
+            <button onclick="addToCart('003','Nike',89.99, 'Women')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('003')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo3" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+
+        <!-- Product Information Popups -->
+        <div data-role="popup" id="productInfo1" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Product Information</h2>
+            <h3>Item Number: 001</h3>
+            <h3>Size: L</h3>
+            <!-- Other details for product 1 -->
+        </div>
+
+        <div data-role="popup" id="productInfo2" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Product Information</h2>
+            <h3>Item Number: 002</h3>
+            <h3>Size: XL</h3>
+            <!-- Other details for product 2 -->
+        </div>
+
+        <div data-role="popup" id="productInfo3" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Product Information</h2>
+            <h3>Item Number: 003</h3>
+            <h3>Size: M</h3>
+            <!-- Other details for product 3 -->
+        </div>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+<!--Men Page-->
+<div data-role="page" id="menPage">
+    <!-- Header section -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop" class="ui-btn-active ui-state-persist"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>Men</h2>
+        <div id="menAddedProductQuantity">
+            Added products: <span id="menAddedProductQuantity">0</span>
+        </div>
+    </header>
+
+    <section class="imageSection">
+        <!-- Products for Men -->
+        <div class="product">
+            <img src="img/men2.png" alt="Clickable Image" width="500" height="450">
+            <h3>Price: $38.49</h3>
+            <button onclick="addToCart('004','Leather shoes',38.49, 'Men')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('004')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo4" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+        <div class="product">
+            <img src="img/men1.png" alt="Clickable Image" width="500" height="450">
+            <h3>Price: $52.20</h3>
+            <button onclick="addToCart('005','Sports Shoes',52.20, 'Men')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('005')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo5" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+        <div class="product">
+            <img src="img/men3.png" alt="Clickable Image" width="500" height="450">
+            <h3>Price: $25.49</h3>
+            <button onclick="addToCart('006','Party-wear',25.49, 'Men')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('006')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo6" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+
+        <div data-role="popup" id="productInfo4" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Purchase Footwear</h2>
+            <h3>Item Number: 001</h3>
+            <h3>Size: L</h3>
+        </div>
+
+        <!--Men 2nd Item-->
+        <div data-role="popup" id="productInfo5" data-theme="b" data-overlay-theme="b" class="ui-content"
+             style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Purchase Footwear</h2>
+            <h3>Item Number: 002</h3>
+            <h3>Size: XL</h3>
+        </div>
+
+        <!--Men 3rd Item-->
+        <div data-role="popup" id="productInfo6" data-theme="b" data-overlay-theme="b" class="ui-content"
+             style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Purchase Footwear</h2>
+            <h3>Item Number: 003</h3>
+            <h3>Size: M</h3>
+        </div>
+
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+<!--Children Page-->
+<div data-role="page" id="kidsPage">
+    <!-- Header section -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop" class="ui-btn-active ui-state-persist"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>Children</h2>
+        <div id="kidsAddedProductQuantity">
+            Cart Quantity: <span id="kidsAddedProductQuantity">0</span>
+        </div>
+    </header>
+
+    <section class="imageSection">
+<!--        Kids Product-->
+        <div class="product">
+            <img src="img/child1.png" alt="Clickable Image" width="500" height="450">
+            <h3>Price: $18.25</h3>
+            <button onclick="addToCart('007','Daily-wear',18.25, 'Kids')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('007')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo7" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+        <div class="product">
+            <img src="img/child2.png" alt="Clickable Image" width="500" height="450">
+            <h3>Price: $29.99</h3>
+            <button onclick="addToCart('008','Party-wear',29.99, 'Kids')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('008')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo8" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+        <div class="product">
+            <img src="img/child3.png" alt="Clickable Image" width="500" height="450">
+            <h3>Price: $32.99</h3>
+            <button onclick="addToCart('009','Sports',32.99, 'Kids')" class="ui-btn-active">Add to Cart</button>
+            <button onclick="removeFromCart('009')" data-theme="b">Remove from Cart</button>
+            <a href="#productInfo9" data-rel="popup" data-position-to="window" data-transition="pop">Click for Product information</a>
+        </div>
+        <!--Child 1st Item-->
+        <div data-role="popup" id="productInfo7" data-theme="b" data-overlay-theme="b" class="ui-content"
+             style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Purchase Footwear</h2>
+            <h3>Item Number: 001</h3>
+            <h3>Size: S</h3>
+        </div>
+
+        <!--Child 2nd Item-->
+        <div data-role="popup" id="productInfo8" data-theme="b" data-overlay-theme="b" class="ui-content"
+             style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Purchase Footwear</h2>
+            <h3>Item Number: 002</h3>
+            <h3>Size: M</h3>
+        </div>
+
+        <!--Child 3rd Item-->
+        <div data-role="popup" id="productInfo9" data-theme="b" data-overlay-theme="b" class="ui-content"
+             style="max-width: 500px; padding-bottom: 2em" id="popUpCloseRight" class="ui-content" style="max-width: 280px">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <h2>Purchase Footwear</h2>
+            <h3>Item Number: 003</h3>
+            <h3>Size: M</h3>
+        </div>
+
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+<!--Add Review Page-->
+<div data-role="page" id="ModifyReviewPage">
+    <!--    &lt;!&ndash; Header section &ndash;&gt;-->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullet" class="ui-btn-active ui-state-persist"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+
+        <h2>Modify Review</h2>
+    </header>
+
+    <!--    &lt;!&ndash; Content section for modifying a review &ndash;&gt;-->
+    <section data-role="content" class="border">
+        <form action="" id="modifyReview" name="modifyReview" method="post">
+
+            <!--            &lt;!&ndash; Input field for Restaurant Name &ndash;&gt;-->
+            <label for="txtCustomer">Customer Name:</label>
+            <input type="text" id="txtCustomer" name="txtCustomer" data-clear-btn="true">
+
+            <!--            &lt;!&ndash; Input field for Business ID &ndash;&gt;-->
+            <label for="txtCId">Customer id:</label>
+            <input type="text" id="txtCId" name="txtCId" data-clear-btn="true">
+
+            <!--            &lt;!&ndash; Dropdown for selecting Province &ndash;&gt;-->
+            <label for="state">Choose Province:</label>
+            <select name="state" id="state" data-native-menu="true" data-iconpos="right">
+                <!--                &lt;!&ndash; List of province options &ndash;&gt;-->
+                <option value="AB">Alberta</option>
+                <option value="BC">British Columbia</option>
+                <option value="MB">Manitoba</option>
+                <option value="NB">New Brunswick</option>
+                <option value="NL">Newfoundland and Labrador</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="NT">Northwest Territories</option>
+                <option value="NU">Nunavut</option>
+                <option value="ON">Ontario</option>
+                <option value="PE">Prince Edward Island</option>
+                <option value="QC">Quebec</option>
+                <option value="SK" selected>Saskatchewan</option>
+                <option value="YT">Yukon</option>
+            </select>
+
+            <!--            &lt;!&ndash; Input field for Reviewer Email &ndash;&gt;-->
+            <label for="customerProduct1">Customer Product:</label>
+            <input type="text" id="customerProduct1" name="customerProduct1" data-clear-btn="true">
+
+            <!--            &lt;!&ndash; Textarea for Reviewer Comments &ndash;&gt;-->
+            <label for="comment">Customer Comments:</label>
+            <textarea id="comment" name="comment"></textarea>
+
+            <!--            &lt;!&ndash; Checkbox to add ratings &ndash;&gt;-->
+            <div class="check1">
+                <!--                &lt;!&ndash; Checkbox to add ratings &ndash;&gt;-->
+                <label for="checkRatings1">Do you want to add your ratings?</label>
+                <input type="checkbox" id="checkRatings1" name="checkRatings1">
+                <div id="ratingFields1" style="display: none;">
+                    <label for="textQuality1">Quality (0-5) :</label>
+                    <input type="number" id="textQuality1" name="textQuality1" min="0" max="5" data-clear-btn="true">
+
+                    <label for="textComfort1">Comfort (0-5) :</label>
+                    <input type="number" id="textComfort1" name="textComfort1" min="0" max="5" data-clear-btn="true">
+
+                    <label for="textPrice1">Price (0-5) :</label>
+                    <input type="number" id="textPrice1" name="textPrice1" min="0" max="5" data-clear-btn="true">
+
+                    <label for="ratings1">Overall Ratings (1-100) :</label>
+                    <input type="text" data-type="range" id="ratings1" name="ratings1" min="1" max="100"
+                           data-highlight="true">
+                </div>
+
+                <br>
+                <div data-role="controlgroup" data-type="horizontal">
+                    <button type="button" id="btnCancel" name="btnCancel" data-role="button" data-theme="a">Cancel
+                    </button>
+                    <button type="button" id="btnDelete" name="btnDelete" data-role="button" data-theme="b">Delete
+                    </button>
+                    <button type="button" id="btnUpdate" name="btnUpdate" data-role="button" class="ui-btn-active">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+<!--Modify Review Page-->
+<div data-role="page" id="AddReviewPage">
+    <!-- Header section -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop"> Collections </a></li>
+                <li><a href="#AddReviewPage" data-icon="grid" class="ui-btn-active ui-state-persist"> Add Reviews </a>
+                </li>
+                <li><a href="#ReviewPage" data-icon="bullet"> Reviews </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>Add a Review</h2>
+    </header>
+
+    <!-- Form section for adding a review -->
+    <section>
+        <form action="" id="RegForm" name="RegForm" method="post">
+            <!-- Input field for Restaurant Name -->
+            <label for="textCustName">Customer Name : </label>
+            <input type="text" id="textCustName" name="textCustName" data-clear-btn="true">
+
+            <!-- Input field for Business ID -->
+            <label for="textId">Customer ID : </label>
+            <input type="text" id="textId" name="textId" data-clear-btn="true">
+
+            <!-- Dropdown for selecting Province -->
+            <label for="custState">Choose Province : </label>
+            <select name="state" id="custState" data-native-menu="true" data-iconpos="right">
+                <!-- List of province options -->
+                <option value="AB">Alberta</option>
+                <option value="BC">British Columbia</option>
+                <option value="MB">Manitoba</option>
+                <option value="NB">New Brunswick</option>
+                <option value="NL">Newfoundland and Labrador</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="NT">Northwest Territories</option>
+                <option value="NU">Nunavut</option>
+                <option value="ON">Ontario</option>
+                <option value="PE">Prince Edward Island</option>
+                <option value="QC">Quebec</option>
+                <option value="SK" selected>Saskatchewan</option>
+                <option value="YT">Yukon</option>
+            </select>
+
+            <!-- Input field for Reviewer Email -->
+            <label for="customerProduct">Customer Product:</label>
+            <input type="text" id="customerProduct" name="customerProduct" data-clear-btn="true">
+
+            <!-- Textarea for Reviewer Comments -->
+            <label for="textComments">Comments : </label>
+            <div class="texttt">
+                <textarea type="text" id="textComments" name="textComments" data-clear-btn="true"></textarea>
+            </div>
+
+            <div class="check1">
+                <!-- Checkbox to add ratings -->
+                <label for="checkRatings">Do you want to add your ratings?</label>
+                <input type="checkbox" id="checkRatings" name="checkRatings">
+
+                <!-- Rating Textboxes (initially hidden) -->
+                <div id="ratingFields" style="display: none;">
+                    <label for="textQuality">Quality (0-5) :</label>
+                    <input type="number" id="textQuality" name="textQuality" value="0" min="0" max="5"
+                           data-clear-btn="true">
+
+                    <label for="textComfort">Comfort (0-5) :</label>
+                    <input type="number" id="textComfort" name="textComfort" value="0" min="0" max="5"
+                           data-clear-btn="true">
+
+                    <label for="textPrice">Price (0-5) :</label>
+                    <input type="number" id="textPrice" name="textPrice" value="0" min="0" max="5"
+                           data-clear-btn="true">
+
+                    <!-- Range input for Overall Ratings -->
+                    <label for="ratings">Overall Ratings (1-100) :</label>
+                    <input type="text" data-type="range" id="ratings" name="ratings" min="1" max="100" value="0"
+                           data-highlight="true">
+                </div>
+            </div>
+            <br>
+            <!-- Button to Save the review -->
+            <div class="rPageButton">
+                <button type="button" id="btnSave" name="btnSave" data-role="Button" class="ui-btn-active">Save</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer section -->
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+<!--View Review Page-->
+<div data-role="page" id="ReviewPage">
+    <!-- Header section -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets" class="ui-btn-active ui-state-persist"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>List of Reviews</h2>
+    </header>
+    <!-- Content section for displaying a list of reviews -->
+    <section data-role="content" class="border">
+
+        <ul data-role="listview" id="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
+
+            <!-- First review item -->
+            <li data-icon="gear">
+                <a href="#ModifyReviewPage" target="_blank">
+                    <div class="heading">
+                        <h4>Jay Jasoliya</h4>
+                    </div>
+                    <h3>Customer Id: JJ231</h3>
+                    <h3>State: Saskatchewan</h3>
+                    <h3>Email: jjasoliya2212@conestogac.on.ca</h3>
+                    <h3>Comments: Better Flexibility</h3>
+                    <h3>Overall Rating: 98%</h3>
+                </a>
+                <a href="#ModifyReviewPage" target="_blank"></a>
+            </li>
+
+            <!-- Second review item -->
+            <li>
+                <a href="#ModifyReviewPage">
+                    <div class="heading">
+                        <h4>Harmeen Kaur</h4>
+                    </div>
+                    <h3>Customer Id: HK234</h3>
+                    <h3>State: Nova Scotia</h3>
+                    <h3>Email: hkaur@conestogac.on.ca</h3>
+                    <h3>Comments: Cheaper Price with better Quality</h3>
+                    <h3>Overall Rating: 90%</h3>
+                </a>
+                <a href="#ModifyReviewPage"></a>
+            </li>
+
+            <!-- Third review item -->
+            <li>
+                <a href="#ModifyReviewPage">
+                    <div class="heading">
+                        <h4>Rutvi Jay Mistry</h4>
+                    </div>
+                    <h3>Business Id: RJ012</h3>
+                    <h3>State: Ontario</h3>
+                    <h3>Review Email: rmistry@conestogac.on.ca</h3>
+                    <h3>Comments: Very Nice Comfort</h3>
+                    <h3>Overall Rating: 88%</h3>
+                </a>
+                <a href="#ModifyReviewPage"></a>
+            </li>
+        </ul>
+    </section>
+    <a href="#AddReviewPage">
+        <button type="button" id="btnSaveSettings" name="btnSaveSettings" data-role="button" class="ui-btn-active"> Add
+            a Review
+        </button>
+    </a>
+
+    <!-- Footer section -->
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+
+<!--Settings Page-->
+<div data-role="page" id="AboutPage">
+    <!-- Header section -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info" class="ui-btn-active ui-state-persist"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>About Us</h2>
+    </header>
+
+    <!-- Content section for modifying settings -->
+    <section>
+        <!-- Collapsible for Jay -->
+        <div data-role="collapsibleset">
+            <div data-role="collapsible">
+                <h3>Jay</h3>
+                <a data-role="button" data-rel="dialog">
+                    <h4> Name : Jasoliya, Jay </h4>
+                    <h4> Student No. : 8862212 </h4>
+                    <h4> Email : jjasoliya2212@conestogac.on.ca </h4>
+                </a>
+            </div>
+
+            <!-- Collapsible for Harmeen -->
+            <div data-role="collapsible">
+                <h3>Harmeen</h3>
+                <a data-role="button" data-rel="dialog">
+                    <h4> Name : Kaur, Harmeen </h4>
+                    <h4> Student No. : 8885264</h4>
+                    <h4> Email :>hkaur5264 @conestogac.on.ca </h4>
+                </a>
+            </div>
+
+            <!-- Collapsible for Rutvi -->
+            <div data-role="collapsible">
+                <h3>Rutvi</h3>
+                <a data-role="button" data-rel="dialog">
+                    <h4> Name : Mistry, Rutvi Jay</h4>
+                    <h4> Student No. 8889104: </h4>
+                    <h4> Email : rmistry9104@conestogac.on.ca </h4>
+                </a>
+            </div>
+        </div>
+
+        <div>
+<!--            button for clear database-->
+            <button type="button" id="btnClear" name="btnClear" data-role="button" data-theme="b">
+                Clear Database
+            </button>
+        </div>
+
+    </section>
+
+    <!-- Footer section -->
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+<div data-role="page" id="CartPage">
+    <!-- Header -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+        <!-- Navigation Bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop"> Collections </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets"> Reviews </a></li>
+                <li><a href="#CartPage" data-icon="shop" class="ui-btn-active ui-state-persist"> Cart </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>Cart Page</h2>
+    </header>
+    <!-- Main Content Section -->
+    <section>
+        <table id="cartTable">
+            <tbody id="cartItems">
+            <!-- Cart items will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </section>
+    <!-- Total Price Display -->
+    <div id="totalPrice"></div>
+    <div>
+        <!-- Checkout Button -->
+        <a href="#Checkout" data-role="button" id="btnCheckout" name="btnCheckout" class="ui-btn-active"> Checkout </a>
+    </div>
+    <!-- Button to view orders -->
+    <button id="viewOrdersBtn" data-theme="b">View Orders</button>
+
+    <!-- Footer -->
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+</div>
+
+
+<!--Checkout Page-->
+
+<div data-role="page" id="Checkout">
+    <!-- Header section -->
+    <header data-role="header" data-position="fixed" data-theme="a">
+
+        <!-- Navigation bar -->
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home"> Home </a></li>
+                <li><a href="#CollectionPage" data-icon="shop" class="ui-btn-active ui-state-persist"> Collections </a></li>
+                <li><a href="#AddReviewPage" data-icon="grid"> Add Reviews </a></li>
+                <li><a href="#ReviewPage" data-icon="bullets"> Reviews </a></li>
+                <li><a href="#AboutPage" data-icon="info"> About Us </a></li>
+            </ul>
+        </div>
+        <h2>CheckOut Page</h2>
+    </header>
+    <section>
+        <form action="" id="checkoutForm" name="checkoutForm" method="post">
+            <!-- Input field for CardHolder Name -->
+            <label for="cardHolderName">Customer Name(Card Holder Name) :</label>
+            <input type="text" id="cardHolderName" name="cardHolderName" data-clear-btn="true">
+
+            <!-- Input field for Email  -->
+            <label for="cartEmail">Email : </label>
+            <input type="Email" id="cartEmail" name="cartEmail" data-clear-btn="true">
+
+            <!-- Input field for Customer Phone Number-->
+            <label for="cartPhone">Phone : </label>
+            <input type="text" id="cartPhone" name="cartPhone" data-clear-btn="true">
+
+            <!-- Input field for Customer Address  -->
+            <label for="cartAddress">Address : </label>
+            <input type="text" id="cartAddress" name="cartAddress" data-clear-btn="true">
+
+            <!-- Dropdown for selecting Province -->
+            <label for="cartProvince">Choose Province : </label>
+            <select name="state" id="cartProvince" data-native-menu="true" data-iconpos="right">
+                <!-- List of province options -->
+                <option value="AB">Alberta</option>
+                <option value="BC">British Columbia</option>
+                <option value="MB">Manitoba</option>
+                <option value="NB">New Brunswick</option>
+                <option value="NL">Newfoundland and Labrador</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="NT">Northwest Territories</option>
+                <option value="NU">Nunavut</option>
+                <option value="ON">Ontario</option>
+                <option value="PE">Prince Edward Island</option>
+                <option value="QC">Quebec</option>
+                <option value="SK" selected>Saskatchewan</option>
+                <option value="YT">Yukon</option>
+            </select>
+
+            <!-- Input field for postal code -->
+            <label for="postalCode">Postal Code : </label>
+            <input type="text" id="postalCode" name="postalCode" data-clear-btn="true">
+
+            <!-- Input field for Country -->
+            <label for="Country">Country : </label>
+            <input type="text" id="Country" name="Country" data-clear-btn="true">
+
+            <!-- Input field for Credit Card Number -->
+            <label for="creditCardNumber">Credit Card Number :</label>
+            <input type="text" id="creditCardNumber" name="creditCardNumber" data-clear-btn="true">
+
+            <!-- Input field for Credit Card Expiry -->
+            <label for="cardExpiry">Card Expiry :</label>
+            <input type="text" id="cardExpiry" name="cardExpiry" data-clear-btn="true">
+
+            <!-- Input field for Credit Card CVV -->
+            <label for="cvv">CVV :</label>
+            <input type="text" id="cvv" name="cvv" data-clear-btn="true">
+
+<!--            <&#45;&#45; Button for Order Place &ndash;&gt;-->
+            <div class="rPageButton">
+                <button type="submit" id="btnPlaceOrder" name="btnPlaceOrder" data-role="button" class="ui-btn-active">Place Order</button>
+            </div>
+        </form>
+
+<!--        <&#45;&#45;To Display Order Summary&ndash;&gt;-->
+        <div id="checkoutInfo"></div>
+
+    </section>
+    <!-- Footer -->
+    <footer data-role="footer" data-position="fixed" data-theme="a">
+        <h3>&copy; 2023; JKM Shoe Shop</h3>
+    </footer>
+
+</div>
+</body>
+</html>
+
